@@ -1,0 +1,12 @@
+CREATE DATABASE osu;
+
+USE osu;
+
+CREATE TABLE chat (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    bancho_id VARCHAR(255),
+    username VARCHAR(255),
+    message VARCHAR(255),
+    channel VARCHAR(255),
+    time DATETIME DEFAULT CURRENT_TIMESTAMP
+);

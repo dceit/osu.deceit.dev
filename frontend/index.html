@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" class="dark" data-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>#osu search</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+            rel="stylesheet"
+        />
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.3/purify.min.js"></script>
+        <script src="scripts/script.js"></script>
+    </head>
+    <body class="bg-gray-900">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 md:h-screen">
+            <div
+                class="bg-gray-800 rounded text-gray-100 p-4 shadow-md md:col-span-1 h-full"
+            >
+                <h2 class="text-xl font-bold mb-3">osu! logger</h2>
+                <p class="mb-3">Query any collected chat logs from #osu</p>
+
+                <form action="">
+                    <h2 class="text-xl font-bold mb-3">Filters</h2>
+                    <label
+                        class="block text-gray-200 text-sm font-bold mb-3"
+                        for="username"
+                    >
+                        From
+                    </label>
+                    <input
+                        class="shadow appearance-none rounded w-full py-2 px-3 bg-gray-700 text-gray-300 leading-tight focus:outline-none focus:shadow-outline mb-3"
+                        id="username"
+                        name="username"
+                        type="text"
+                        placeholder="chocomint"
+                    />
+
+                    <label
+                        class="block text-gray-200 text-sm font-bold mb-3"
+                        for="keywords"
+                    >
+                        Keywords
+                    </label>
+                    <input
+                        class="shadow appearance-none rounded w-full py-2 px-3 bg-gray-700 text-gray-300 leading-tight focus:outline-none focus:shadow-outline mb-3"
+                        id="keywords"
+                        name="keywords"
+                        type="text"
+                        placeholder="wysi"
+                    />
+                    <button
+                        type="submit"
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full mb-3"
+                    >
+                        Search
+                    </button>
+                </form>
+
+                <h2 class="text-lg font-bold mb-3">Delete my Data</h2>
+                <button
+                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded w-full mb-3"
+                >
+                    Delete
+                </button>
+            </div>
+
+            <div
+                class="p-4 bg-gray-800 rounded text-gray-100 shadow-md md:col-span-2 h-full"
+            >
+                <div class="message-container"></div>
+            </div>
+        </div>
+    </body>
+</html>
