@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", async (event) => {
   <div class="flex items-start gap-2.5 mt-3">
       <img
           class="w-8 h-8 rounded-full shadow-lg"
-          src="https://a.ppy.sh/{{CHAT_BANCHO_ID}}?{{CURRENT_TIME}}.jpeg"
+          src="https://api.deceit.dev/api/osu/image/{{CHAT_SENDER}}"
           alt="{{CHAT_SENDER}}"
       />
       <div class="flex flex-col gap-1 w-full max-w-[320px]">
