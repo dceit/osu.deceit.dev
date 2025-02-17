@@ -11,20 +11,79 @@
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.3/purify.min.js"></script>
         <script src="scripts/script.js"></script>
+
+        <link
+            rel="icon"
+            type="image/x-icon"
+            href="https://cdn.7tv.app/emote/01FCGQ1HF00009035XEZ39B15F/4x.avif"
+        />
+
+        <style>
+            @import url("https://fonts.cdnfonts.com/css/exo-20");
+
+            button {
+                transition: all ease 0.2s;
+            }
+
+            button:hover {
+                background-position-x: -20px;
+            }
+
+            * {
+                font-family: "Exo 2.0", sans-serif;
+            }
+
+            .header-name {
+                font-size: 30px;
+            }
+        </style>
     </head>
-    <body class="bg-gray-900">
+    <body
+        class="text-white dark"
+        style="
+            background: radial-gradient(circle at top center, #27252b, #19181c);
+            background-attachment: fixed;
+        "
+    >
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 md:h-screen">
             <div
                 class="bg-gray-800 rounded text-gray-100 p-4 shadow-md md:col-span-1 h-full"
+                style="
+                    background: linear-gradient(
+                        to bottom,
+                        RGBA(48, 46, 56, 1),
+                        #2c2b33
+                    );
+                    background-attachment: fixed;
+                    border: 1px solid rgba(200, 200, 255, 0.1);
+                "
             >
-                <h2 class="text-xl font-bold mb-3">osu! logger</h2>
-                <p class="mb-3">Query any collected chat logs from #osu</p>
+                <div
+                    class="heading rounded xs-blur"
+                    style="
+                        background-image: url(https://i.ppy.sh/1263e1d97ce5d6bad6e8001dc8351280192e6322/68747470733a2f2f6f73752e7070792e73682f77696b692f696d616765732f7368617265642f6e6577732f323032342d31322d30332d6d69646e696768742d6d6f6d656e742d6172742d636f6e746573742f62616e6e65722e6a7067);
+                        background-size: cover;
+                        user-select: none;
+                    "
+                >
+                    <div
+                        class="darken p-6 rounded text-center"
+                        style="background-color: rgba(0, 0, 0, 0.4); width: 100% height: 100%;
+                        text-shadow: 0px 0px 2px black;"
+                    >
+                        <h2 class="text-xl font-bold mb-1 mt-2 header-name">
+                            osu!logger
+                        </h2>
+                        <p class="mb-3">Historical records of #osu chats.</p>
+                    </div>
+                </div>
 
                 <form action="">
-                    <h2 class="text-xl font-bold mb-3">Filters</h2>
+                    <h2 class="flex text-xl font-bold mt-3 mb-3">Filters</h2>
                     <label
                         class="block text-gray-200 text-sm font-bold mb-3"
                         for="username"
+                        style="color: #8d899b"
                     >
                         From
                     </label>
@@ -33,40 +92,96 @@
                         id="username"
                         name="username"
                         type="text"
-                        placeholder="chocomint"
+                        placeholder="deceit"
+                        style="background-color: #3d3946"
                     />
 
                     <label
                         class="block text-gray-200 text-sm font-bold mb-3"
                         for="keywords"
+                        style="color: #8d899b"
                     >
-                        Keywords
+                        Keyword
                     </label>
                     <input
                         class="shadow appearance-none rounded w-full py-2 px-3 bg-gray-700 text-gray-300 leading-tight focus:outline-none focus:shadow-outline mb-3"
                         id="keywords"
                         name="keywords"
                         type="text"
-                        placeholder="wysi"
+                        placeholder="727 wysi"
+                        style="background-color: #3d3946"
                     />
+
+                    <h2 class="text-xl font-bold mt-3 mb-3">Options</h2>
+
                     <button
-                        type="submit"
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full mb-3"
+                        class="flex items-center justify-between bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded w-full mb-3 pb-3 pt-3"
+                        style="
+                            background-image: url(&quot;https://osu.ppy.sh/assets/images/button.16de7c2c.svg&quot;);
+                            background-size: 175%;
+                            box-shadow:
+                                0 5px #3772d5,
+                                0 5px 3px rgba(0, 0, 0, 0.25);
+                        "
                     >
-                        Search
+                        <span class="flex-1 text-left">Search</span>
+                        <svg
+                            class="w-5 h-5"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M11 4a7 7 0 100 14 7 7 0 000-14zm0 0l6 6"
+                            />
+                        </svg>
                     </button>
                 </form>
 
-                <h2 class="text-lg font-bold mb-3">Delete my Data</h2>
                 <button
-                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded w-full mb-3"
+                    class="flex items-center justify-between bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 rounded w-full mb-3 pb-3 pt-3"
+                    style="
+                        background-image: url(&quot;https://osu.ppy.sh/assets/images/button.16de7c2c.svg&quot;);
+                        background-size: 175%;
+                        box-shadow:
+                            0 5px #d03d3d,
+                            0 5px 3px rgba(0, 0, 0, 0.25);
+                    "
                 >
-                    Delete
+                    <span class="flex-1 text-left">Delete my Data</span>
+                    <svg
+                        class="w-5 h-5 ml-2"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12"
+                        />
+                    </svg>
                 </button>
             </div>
 
             <div
                 class="p-4 bg-gray-800 rounded text-gray-100 shadow-md md:col-span-2 h-full"
+                style="
+                    background: linear-gradient(
+                        to bottom,
+                        RGBA(48, 46, 56, 1),
+                        #2c2b33
+                    );
+                    background-attachment: fixed;
+                    border: 1px solid rgba(200, 200, 255, 0.1);
+                    overflow-y: auto;
+                "
             >
                 <div class="message-container"></div>
             </div>

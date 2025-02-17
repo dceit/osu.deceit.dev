@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", async (event) => {
   const TEMPLATE_CHAT_ENTRY = `
   <div class="flex items-start gap-2.5 mt-3">
       <img
-          class="w-8 h-8 rounded-full"
+          class="w-8 h-8 rounded-full shadow-lg"
           src="https://a.ppy.sh/{{CHAT_BANCHO_ID}}?{{CURRENT_TIME}}.jpeg"
           alt="{{CHAT_SENDER}}"
       />
@@ -17,12 +17,12 @@ document.addEventListener("DOMContentLoaded", async (event) => {
                   >{{CHAT_SENDER}}</span
               >
               <span
-                  class="text-sm font-normal text-gray-300 dark:text-gray-400"
-                  >{{CHAT_TIME}}</span
-              >
+                  class="text-sm font-normal"
+                  style="color: #9d8a93 !important;">{{CHAT_TIME}}</span>
           </div>
           <div
-              class="flex flex-col leading-1.5 p-4 border-gray-200 bg-gray-100 rounded bg-gray-700"
+              class="flex flex-col leading-1.5 p-4 border-gray-200 rounded bg-gray-700 shadow-md"
+              style="background-color: #1c1719;"
           >
               <p class="text-sm font-normal text-white">
                   {{CHAT_CONTENT}}
@@ -33,6 +33,21 @@ document.addEventListener("DOMContentLoaded", async (event) => {
   `;
 
   const messageContainer = document.querySelector(".message-container");
+
+  async function getRedirectLocation(url) {
+    try {
+      const response = await fetch(url, { redirect: "manual" });
+
+      if (response.status === 302) {
+        const location = response.headers.get("Location");
+        return location;
+      } else {
+        return `No redirect. Status code: ${response.status}`;
+      }
+    } catch (error) {
+      return `An error occurred: ${error.message}`;
+    }
+  }
 
   function xssFilter(dirtyInput) {
     return DOMPurify.sanitize(dirtyInput, { ALLOWED_TAGS: [] }).replace(
