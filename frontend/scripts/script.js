@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", async (event) => {
           </div>
           <div
               class="flex flex-col leading-1.5 p-4 border-gray-200 rounded shadow-md"
-              style="background-color: #1c1719;"
+              style="background-color: #1c1719 !important;"
           >
               <p class="text-sm font-normal text-white">
                   {{CHAT_CONTENT}}
