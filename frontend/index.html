@@ -10,13 +10,25 @@
         />
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.3/purify.min.js"></script>
-        <script src="scripts/script.js?1338"></script>
+        <script src="scripts/script.js?1341"></script>
 
         <link
             rel="icon"
             type="image/x-icon"
             href="https://cdn.7tv.app/emote/01FCGQ1HF00009035XEZ39B15F/4x.avif"
         />
+
+        <script src="https://cdn.jsdelivr.net/npm/motion@latest/dist/motion.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js"
+            integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
+
+        <script>
+            const { animate, scroll } = Motion;
+        </script>
 
         <style>
             @import url("https://fonts.cdnfonts.com/css/exo-20");
@@ -65,27 +77,32 @@
                 <div
                     class="heading rounded xs-blur"
                     style="
-                        background-image: url(https://i.ppy.sh/1263e1d97ce5d6bad6e8001dc8351280192e6322/68747470733a2f2f6f73752e7070792e73682f77696b692f696d616765732f7368617265642f6e6577732f323032342d31322d30332d6d69646e696768742d6d6f6d656e742d6172742d636f6e746573742f62616e6e65722e6a7067);
+                        background-image: url(https://i.imgur.com/UwZYo6B.jpeg);
                         background-size: cover;
                         user-select: none;
                     "
                 >
                     <div
                         class="darken p-6 rounded text-center"
-                        style="background-color: rgba(0, 0, 0, 0.4); width: 100% height: 100%;
-                        text-shadow: 0px 0px 2px black;"
+                        style="background-color: rgba(0, 0, 0, 0.2); width: 100% height: 100%;
+                        text-shadow: 0px 0px 2px black;
+                        border: 2px solid rgba(255, 255, 255, 0.1);"
                     >
-                        <h2 class="text-xl font-bold mb-1 mt-2 header-name">
+                        <h2
+                            class="text-xl font-bold mb-1 mt-2 header-name slide-in-left"
+                        >
                             osu!logger
                         </h2>
-                        <p class="mb-3">Historical records of #osu chats.</p>
+                        <p class="mb-3 slide-in-left">
+                            Historical records of #osu chats.
+                        </p>
                     </div>
                 </div>
 
                 <form action="">
-                    <h2 class="flex text-xl font-bold mt-3 mb-3">Filters</h2>
+                    <h2 class="text-xl font-bold mt-5 mb-3">Filters</h2>
                     <label
-                        class="block text-gray-200 text-sm font-bold mb-3"
+                        class="block text-gray-200 text-sm font-bold mb-3 slide-in"
                         for="username"
                         style="color: #8d899b"
                     >
@@ -101,7 +118,7 @@
                     />
 
                     <label
-                        class="block text-gray-200 text-sm font-bold mb-3"
+                        class="block text-gray-200 text-sm font-bold mb-3 slide-in"
                         for="keywords"
                         style="color: #8d899b"
                     >
@@ -129,20 +146,7 @@
                         "
                     >
                         <span class="flex-1 text-left">Search</span>
-                        <svg
-                            class="w-5 h-5"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M11 4a7 7 0 100 14 7 7 0 000-14zm0 0l6 6"
-                            />
-                        </svg>
+                        <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </form>
 
@@ -157,21 +161,14 @@
                     "
                 >
                     <span class="flex-1 text-left">Delete my Data</span>
-                    <svg
-                        class="w-5 h-5 ml-2"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M6 18L18 6M6 6l12 12"
-                        />
-                    </svg>
+                    <i class="fa-solid fa-trash"></i>
                 </button>
+
+                <p class="mt-10 text-center italic opacity-40">
+                    This website was created by Deceit. You may contact me
+                    regarding abuse, security vulnerabilities, or requests to
+                    remove all future data.
+                </p>
             </div>
 
             <div
@@ -191,4 +188,16 @@
             </div>
         </div>
     </body>
+
+    <script>
+        animate(".slide-in-left", {
+            opacity: [0, 1],
+            y: [-30, 0],
+        });
+
+        animate(".slide-in", {
+            opacity: [0, 1],
+            x: [50, 0],
+        });
+    </script>
 </html>

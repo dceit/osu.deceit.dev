@@ -3,19 +3,19 @@ document.addEventListener("DOMContentLoaded", async (event) => {
   const API_ENDPOINT = `/api/osu/chat`;
   const TEMPLATE_CHAT_ENTRY = `
   <div class="flex items-start gap-2.5 mt-3">
-      <img
+      <a href="http://osu.ppy.sh/u/{{CHAT_SENDER}}"><img
           class="w-8 h-8 rounded-full shadow-lg"
           src="https://api.deceit.dev/api/osu/image/{{CHAT_SENDER}}"
           alt="{{CHAT_SENDER}}"
-      />
+      /></a>
       <div class="flex flex-col gap-1 w-full max-w-[320px]">
           <div
               class="flex items-center space-x-2 rtl:space-x-reverse"
           >
-              <span
+              <a href="http://osu.ppy.sh/u/{{CHAT_SENDER}}"><span
                   class="text-sm font-semibold text-gray-200 dark:text-white"
                   >{{CHAT_SENDER}}</span
-              >
+              ></a>
               <span
                   class="text-sm font-normal"
                   style="color: #9d8a93 !important;">{{CHAT_TIME}}</span>
@@ -30,6 +30,12 @@ document.addEventListener("DOMContentLoaded", async (event) => {
           </div>
       </div>
   </div>
+  `;
+
+  const TEMPLATE_NO_CHAT_ENTRY = `
+    <h1 class="text-center text-xl font-bold">Nothing found!</h1>
+    <p class="text-center">osu!logger database does not have anything which matches this query.</p>
+    <img class="mt-5 mx-auto" src="https://media.tenor.com/8j2YHcxUKKsAAAAM/zoning-out-cat-complete-blcak-cat.gif">
   `;
 
   const messageContainer = document.querySelector(".message-container");
@@ -58,6 +64,11 @@ document.addEventListener("DOMContentLoaded", async (event) => {
 
   function populateMessageContainer(messages) {
     messageContainer.innerHTML = "";
+
+    if (messages.length == 0) {
+      messageContainer.innerHTML = TEMPLATE_NO_CHAT_ENTRY;
+      return;
+    }
 
     messages.forEach((message) => {
       messageContainer.innerHTML += TEMPLATE_CHAT_ENTRY.replaceAll(
