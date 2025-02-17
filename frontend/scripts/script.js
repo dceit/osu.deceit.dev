@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", async (event) => {
                   style="color: #9d8a93 !important;">{{CHAT_TIME}}</span>
           </div>
           <div
-              class="flex flex-col leading-1.5 p-4 border-gray-200 rounded shadow-md"
+              class="flex flex-col leading-1.5 p-4 border-gray-200 rounded shadow-md chat-entry"
               style="background-color: #1c1719 !important;"
           >
               <p class="text-sm font-normal text-white">
