@@ -10,7 +10,7 @@
         />
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.3/purify.min.js"></script>
-        <script src="scripts/script.js?1341"></script>
+        <script src="scripts/script.js?1342"></script>
 
         <link
             rel="icon"
@@ -33,11 +33,13 @@
         <style>
             @import url("https://fonts.cdnfonts.com/css/exo-20");
 
-            button {
+            button,
+            a.rounded {
                 transition: all ease 0.2s;
             }
 
-            button:hover {
+            button:hover,
+            a.rounded:hover {
                 background-position-x: -20px;
             }
 
@@ -51,6 +53,60 @@
 
             .chat-entry {
                 background-color: #1c1719 !important;
+            }
+
+            @keyframes fadeIn {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+
+            .message-container .chat-entry {
+                animation: fadeIn 0.2s ease-in-out forwards;
+                opacity: 0;
+                transition: all 0.1s ease;
+                border: 1px solid rgba(255, 255, 255, 0);
+            }
+
+            .message-container > div > a > img {
+                background-color: #111;
+            }
+
+            .chat-entry:hover {
+                border-color: rgba(255, 200, 255, 1);
+            }
+
+            ::-webkit-scrollbar {
+                width: 8px;
+                height: 8px;
+            }
+
+            ::-webkit-scrollbar-thumb {
+                background-color: #4b4b4b;
+                border-radius: 10px;
+                border: 2px solid #2e2e2e;
+            }
+
+            ::-webkit-scrollbar-track {
+                background: #2e2e2e;
+                border-radius: 10px;
+            }
+
+            scrollbar {
+                width: 8px;
+            }
+
+            scrollbarthumb {
+                background-color: #4b4b4b;
+                border-radius: 10px;
+            }
+
+            scrollbartrack {
+                background: #2e2e2e;
+                border-radius: 10px;
             }
         </style>
     </head>
@@ -72,6 +128,7 @@
                     );
                     background-attachment: fixed;
                     border: 1px solid rgba(200, 200, 255, 0.1);
+                    overflow-y: auto;
                 "
             >
                 <div
@@ -164,11 +221,26 @@
                     <i class="fa-solid fa-trash"></i>
                 </button>
 
-                <p class="mt-10 text-center italic opacity-40">
+                <p class="mt-10 mb-10 text-center italic opacity-40">
                     This website was created by Deceit. You may contact me
                     regarding abuse, security vulnerabilities, or requests to
                     remove all future data.
                 </p>
+
+                <a
+                    class="flex items-center justify-between bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 rounded w-full mb-3 pb-3 pt-3"
+                    href="https://ko-fi.com/deceits/?hidefeed=true&widget=true&embed=false"
+                    style="
+                        background-image: url(&quot;https://osu.ppy.sh/assets/images/button.16de7c2c.svg&quot;);
+                        background-size: 175%;
+                        box-shadow:
+                            0 5px #12a171,
+                            0 5px 3px rgba(0, 0, 0, 0.25);
+                    "
+                >
+                    <span class="flex-1 text-left">Support</span>
+                    <i class="fa-solid fa-money-bill"></i>
+                </a>
             </div>
 
             <div
@@ -198,6 +270,10 @@
         animate(".slide-in", {
             opacity: [0, 1],
             x: [50, 0],
+        });
+
+        animate(".fade-in", {
+            opacity: [0, 1],
         });
     </script>
 </html>

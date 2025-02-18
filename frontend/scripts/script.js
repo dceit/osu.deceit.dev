@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", async (event) => {
       <a href="http://osu.ppy.sh/u/{{CHAT_SENDER}}"><img
           class="w-8 h-8 rounded-full shadow-lg"
           src="https://api.deceit.dev/api/osu/image/{{CHAT_SENDER}}"
-          alt="{{CHAT_SENDER}}"
       /></a>
       <div class="flex flex-col gap-1 w-full max-w-[320px]">
           <div
@@ -62,6 +61,18 @@ document.addEventListener("DOMContentLoaded", async (event) => {
     );
   }
 
+  function formatDate(inputString) {
+    const date = new Date(inputString);
+
+    const hours = String(date.getHours()).padStart(2, "0");
+    const minutes = String(date.getMinutes()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are 0-indexed
+    const day = String(date.getDate()).padStart(2, "0");
+    const year = date.getFullYear();
+
+    return `${hours}:${minutes} - ${month}/${day}/${year}`;
+  }
+
   function populateMessageContainer(messages) {
     messageContainer.innerHTML = "";
 
@@ -76,7 +87,7 @@ document.addEventListener("DOMContentLoaded", async (event) => {
         xssFilter(message.message),
       )
         .replaceAll("{{CHAT_SENDER}}", xssFilter(message.username))
-        .replaceAll("{{CHAT_TIME}}", xssFilter(message.time))
+        .replaceAll("{{CHAT_TIME}}", xssFilter(formatDate(message.time)))
         .replaceAll("{{CHAT_BANCHO_ID}}", xssFilter(message.bancho_id))
         .replaceAll("{{CURRENT_TIME}}", xssFilter(message.time));
     });
