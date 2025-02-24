@@ -37,7 +37,35 @@ document.addEventListener("DOMContentLoaded", async (event) => {
     <img class="mt-5 mx-auto" src="https://media.tenor.com/8j2YHcxUKKsAAAAM/zoning-out-cat-complete-blcak-cat.gif">
   `;
 
+  const parentContainer = document.querySelector(".parent-container");
   const messageContainer = document.querySelector(".message-container");
+  let currentOffset = 0;
+
+  parentContainer.addEventListener("scroll", async function () {
+    const scrollHeight = parentContainer.scrollHeight;
+    const scrollTop = parentContainer.scrollTop;
+    const clientHeight = parentContainer.clientHeight;
+
+    if (scrollTop + clientHeight >= scrollHeight) {
+      const totalMessages = messageContainer.children.length;
+
+      if (totalMessages % 20 === 0) {
+        currentOffset += 20;
+        const params = new URLSearchParams(window.location.search);
+        params.set("offset", currentOffset);
+        window.history.replaceState(
+          {},
+          "",
+          `${window.location.pathname}?${params}`,
+        );
+
+        await fetch(API_BASE + API_ENDPOINT + location.search)
+          .then((response) => response.json())
+          .then((messages) => populateMessageContainer(messages))
+          .catch((error) => console.log(error));
+      }
+    }
+  });
 
   async function getRedirectLocation(url) {
     try {
@@ -74,8 +102,6 @@ document.addEventListener("DOMContentLoaded", async (event) => {
   }
 
   function populateMessageContainer(messages) {
-    messageContainer.innerHTML = "";
-
     if (messages.length == 0) {
       messageContainer.innerHTML = TEMPLATE_NO_CHAT_ENTRY;
       return;
